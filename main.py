@@ -128,14 +128,14 @@
 # print(frame)
 # print(frame2)
 
-#Секрет
-# import os
+Секрет
+import os
 
-# print(os.getenv('My_secret'))
+print(os.getenv('My_secret'))
 
-# print(os.getenv('Secret_key_1'))
-# print(os.getenv('Secret_key_2'))
-# print(os.getenv('Secret_key_3'))
+print(os.getenv('Secret_key_1'))
+print(os.getenv('Secret_key_2'))
+print(os.getenv('Secret_key_3'))
 
 
 

@@ -2,44 +2,44 @@ from sympy import *
 
 k, T, C, L = symbols(
     'k T C L'
-)  #Сосед поменял местами буквы T и C # Что это означает? (Это объявление переменных, которые будут использоваться в формулах в дальнейшем) - оценка 5
+) 
 
 # 1 способ
-C_ost = 100000
+C_ost = 30000
 Am_lst = [
-]  # Что это означает? (Это список, в который будут добавляться значения переменной Am) - оценка 5
+]  
 C_ost_lst = []
 
-for i in range(5):
+for i in range(7):
     Am = (C - L) / T
     C_ost -= Am.subs({
         L: 0,
-        T: 4,
-        C: 100000
-    })  #Сосед поменял значение переменной T с 5 на 4
+        T: 7,
+        C: 30000
+    })  
     Am_lst.append(
         round(Am.subs({
             L: 0,
-            T: 4,
-            C: 100000
-        }), 4)
-    )  #Сосед поменял значение переменной T с 5 на 4, также поменял последнее значение с 2 на 4
+            T: 7,
+            C: 30000
+        }), 2)
+    )  
     C_ost_lst.append(round(C_ost,
-                           4))  #Сосед поменял значение переменной T с 5 на 4
+                           2))  
 
 print('Am_lst:', Am_lst)
 print('C_ost_lst:', C_ost_lst)
 
 # 2 способ
 Aj = 0
-C_ost = 100000  # Что это означает? (Это переменная с присвоенным ей значением, которая будет использоваться в формулах в дальнейшем)  - оценка 5
+C_ost = 30000  
 Am_lst_2 = []
 C_ost_lst_2 = []
 
-for i in range(5):
+for i in range(7):
     Am = k * 1 / T * (C - Aj)
-    C_ost -= Am.subs({k: 2, T: 5, C: 100000})
-    Am_lst_2.append(round(Am.subs({k: 2, T: 5, C: 100000}), 2))
+    C_ost -= Am.subs({k: 2, T: 7, C: 30000})
+    Am_lst_2.append(round(Am.subs({k: 2, T: 7, C: 30000}), 2))
     Aj += Am
     C_ost_lst_2.append(round(C_ost, 2))
 
@@ -49,19 +49,19 @@ print('C_ost_lst_2:', C_ost_lst_2)
 #Контейнер табличного выхода
 import pandas as pd
 
-Y = range(1, 6)
+Y = range(1, 8)
 table1 = list(zip(Y, Am_lst, C_ost_lst))
 table2 = list(zip(Y, Am_lst_2, C_ost_lst_2))
 frame = pd.DataFrame(
     table1, columns=['Y', 'Am_lst', 'C_ost_lst']
-)  # Что это означает? (Это создание таблицы с помощью библиотеки pandas, которая будет использоваться для визуализации данных в дальнейшем)  - оценка 5
+)  
 frame2 = pd.DataFrame(table2, columns=['Y', 'Am_lst_2', 'C_ost_lst_2'])
 
 print(frame)
 print(frame2)
 
 #Контейнер визуализации
-from matplotlib import pyplot as plt  # Что это означает? (Это импортируемая библиотека для визуализации данных с помощью различных графиков)  - оценка 5
+from matplotlib import pyplot as plt  
 
 #Линейный график
 plt.plot(frame['Y'], frame['C_ost_lst'], label='Am')
@@ -70,8 +70,8 @@ plt.plot(frame2['Y'], frame2['C_ost_lst_2'], label='Am_2')
 
 #Круговая диаграмма
 vals = Am_lst_2
-labels = list(range(1, 6))
-explode = (0.1, 0.1, 0.1, 0.1, 0.1)
+labels = list(range(1, 8))
+explode = (0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1)
 fig, ax = plt.subplots()
 ax.pie(vals,
        labels=labels,
